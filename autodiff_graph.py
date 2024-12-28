@@ -319,7 +319,7 @@ class OpNode:
                     for var in self.vars:
                         if var == with_respect_to:
                             count += 1
-                    return count * self.val / with_respect_to.va
+                    return count * self.val / with_respect_to.val
             case "/":
                 if len(self.vars) == 2:
                     if self.vars[0] == self.vars[1]: ## and self.vars[0] == with_respect_to
@@ -462,8 +462,6 @@ class OpNode:
                         self.val = self.vars[0].val
                 else:
                     summ = 0
-                    for root in self.vars:
-                        print(root, root.val.shape)
                     for root in self.vars:
                         summ += root.val
                     self.val = summ
@@ -613,7 +611,6 @@ class OpNode:
             if op != self or y_adjoint is None:
                 op.adjoint = None
                 op.compute_adjoint()
-            # print(op, "ADJOINT:", op.adjoint.shape if type(op.adjoint) == np.ndarray else op.adjoint)
             if not op.is_input and op.op == "var" and not op.frozen:
                 trainable_params.append(op)
                 gradients.append(op.adjoint)

@@ -1,0 +1,5 @@
+**/model_weights/
+**/tensors/
+**/__pycache__/
+**/.cache/
+*.pyc

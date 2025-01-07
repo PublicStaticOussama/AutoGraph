@@ -1,0 +1,6 @@
+numpy==1.26.4
+torch==2.5.1
+tensorflow==2.18.0
+keras==3.6.0
+h5py==3.11.0
+scipy==1.13.1
